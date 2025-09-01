@@ -2,7 +2,7 @@
 
 **The definitive installer for the StrayCore Kernel - an ultimate gaming and development kernel built for performance excellence.**
 
-![StrayCore Banner](https://raw.githubusercontent.com/StrayVibes/StrayCore-Kernel-Installer/main/assets/StrayCoreBanner.png) 
+![StrayCore Banner](https://i.imgur.com/ipMnMfl.png) 
 
 ---
 
@@ -62,7 +62,7 @@ Launch a custom, real-time system dashboard inspired by `htop`. It provides a li
 -   **Live Refresh:** Updates every 1.5 seconds.
 -   **Exit:** Press `q` to quit.
 
-![StrayCore Dashboard](https://raw.githubusercontent.com/StrayVibes/StrayCore-Kernel-Installer/main/assets/StrayCoreDashboard.png)
+![StrayCore Dashboard](https://i.imgur.com/ipMnMfl.png)
 <!-- You can replace this URL with a screenshot of your dashboard -->
 
 ### `straycore-update`
