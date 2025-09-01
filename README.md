@@ -2,7 +2,7 @@
 
 **The definitive installer for the StrayCore Kernel - an ultimate gaming and development kernel built for performance excellence.**
 
-![StrayCore Banner](https://i.imgur.com/ipMnMfl.png) 
+![StrayCore Banner](https://i.imgur.com/wI5zOGU.png) 
 
 ---
 
