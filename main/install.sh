@@ -593,8 +593,6 @@ if [[ "$(uname -r)" == *"StrayCore"* ]]; then
     echo -e "${CYAN}${BOLD}Quick Commands:${NC}"
     echo -e "  ${YELLOW}straycore${NC}         - Launch advanced system dashboard"
     echo -e "  ${YELLOW}straycore-update${NC}  - Update to latest kernel version"
-    echo -e "  ${YELLOW}htop${NC}             - Process monitor"
-    echo -e "  ${YELLOW}neofetch${NC}         - System information"
     echo -e ""
 fi
 EOF
