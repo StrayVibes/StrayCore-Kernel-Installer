@@ -626,9 +626,9 @@ show_holographic_success() {
     echo "    ╔═══════════════════════════════════════════════════════════════╗"
     echo -e "    ║${GRAD2}                         🎉 SUCCESS! 🎉                        ${GRAD1}║"
     echo "    ║                                                               ║"
-    echo -e "    ║${GRAD3}      StrayCore Kernel v2025.13 \"Guardian\" Installed!        ${GRAD1}║"
+    echo -e "    ║${GRAD3}      StrayCore Kernel v2025.13 \"Guardian\" Installed!          ${GRAD1}║"
     echo "    ║                                                               ║"
-    echo -e "    ║${GRAD4}              🚀 Ready for Maximum Performance 🚀             ${GRAD1}║"
+    echo -e "    ║${GRAD4}              🚀 Ready for Maximum Performance 🚀              ${GRAD1}║"
     echo "    ╚═══════════════════════════════════════════════════════════════╝"
     echo -e "${NC}\n"
     
