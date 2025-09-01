@@ -3,7 +3,6 @@
 **The definitive installer for the StrayCore Kernel - an ultimate gaming and development kernel built for performance excellence.**
 
 ![StrayCore Banner](https://raw.githubusercontent.com/StrayVibes/StrayCore-Kernel-Installer/main/assets/StrayCoreBanner.png) 
-<!-- You can replace the banner URL with your own screenshot if you prefer -->
 
 ---
 
