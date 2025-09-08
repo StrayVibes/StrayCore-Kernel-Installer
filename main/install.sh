@@ -206,12 +206,12 @@ prepare_source() {
 
 create_config() {
     echo -e "${BLUE}${BOLD}⚙️  Advanced Configuration Generation${NC}"
-    
+
     show_loading_bar 2 "   Analyzing current hardware configuration"
     yes "" | make localmodconfig >/dev/null 2>&1
-    
-    show_loading_bar 3 "   Applying StrayCore performance optimizations"
-    
+
+    show_loading_bar 3 "   Applying StrayCore performance optimizations with USB support"
+
     cat >> .config << 'EOF'
 
 CONFIG_LOCALVERSION="-StrayCore-v2025.13-Guardian"
@@ -230,12 +230,104 @@ CONFIG_DEFAULT_IOSCHED="bfq"
 CONFIG_CPU_FREQ_DEFAULT_GOV_PERFORMANCE=y
 CONFIG_X86_INTEL_PSTATE=y
 CONFIG_DEBUG_INFO_NONE=y
+
+CONFIG_USB_STORAGE=y
+CONFIG_USB_STORAGE_DEBUG=n
+CONFIG_USB_STORAGE_REALTEK=y
+CONFIG_USB_STORAGE_DATAFAB=y
+CONFIG_USB_STORAGE_FREECOM=y
+CONFIG_USB_STORAGE_ISD200=y
+CONFIG_USB_STORAGE_USBAT=y
+CONFIG_USB_STORAGE_SDDR09=y
+CONFIG_USB_STORAGE_SDDR55=y
+CONFIG_USB_STORAGE_JUMPSHOT=y
+CONFIG_USB_STORAGE_ALAUDA=y
+CONFIG_USB_STORAGE_ONETOUCH=y
+CONFIG_USB_STORAGE_KARMA=y
+CONFIG_USB_STORAGE_CYPRESS_ATACB=y
+CONFIG_USB_STORAGE_ENE_UB6250=y
+CONFIG_USB_UAS=y
+
+CONFIG_SCSI=y
+CONFIG_BLK_DEV_SD=y
+CONFIG_SCSI_MULTI_LUN=y
+CONFIG_SCSI_CONSTANTS=y
+CONFIG_SCSI_LOGGING=y
+CONFIG_SCSI_SCAN_ASYNC=y
+
+CONFIG_USB_SUPPORT=y
+CONFIG_USB=y
+CONFIG_USB_PCI=y
+CONFIG_USB_ANNOUNCE_NEW_DEVICES=y
+CONFIG_USB_DEFAULT_PERSIST=y
+CONFIG_USB_DYNAMIC_MINORS=y
+CONFIG_USB_OTG=y
+CONFIG_USB_OTG_WHITELIST=n
+CONFIG_USB_OTG_BLACKLIST_HUB=n
+CONFIG_USB_MON=y
+CONFIG_USB_WUSB_CBAF=y
+
+CONFIG_USB_XHCI_HCD=y
+CONFIG_USB_XHCI_PCI=y
+CONFIG_USB_XHCI_PLATFORM=y
+CONFIG_USB_EHCI_HCD=y
+CONFIG_USB_EHCI_ROOT_HUB_TT=y
+CONFIG_USB_EHCI_TT_NEWSCHED=y
+CONFIG_USB_EHCI_PCI=y
+CONFIG_USB_EHCI_HCD_PLATFORM=y
+CONFIG_USB_OHCI_HCD=y
+CONFIG_USB_OHCI_HCD_PCI=y
+CONFIG_USB_OHCI_HCD_PLATFORM=y
+CONFIG_USB_UHCI_HCD=y
+
+CONFIG_VFAT_FS=y
+CONFIG_FAT_FS=y
+CONFIG_MSDOS_FS=y
+CONFIG_FAT_DEFAULT_CODEPAGE=437
+CONFIG_FAT_DEFAULT_IOCHARSET="iso8859-1"
+CONFIG_EXFAT_FS=y
+CONFIG_NTFS_FS=y
+CONFIG_NTFS_DEBUG=n
+CONFIG_NTFS_RW=y
+CONFIG_NTFS3_FS=y
+CONFIG_NTFS3_64BIT_CLUSTER=y
+CONFIG_NTFS3_LZX_XPRESS=y
+CONFIG_NTFS3_FS_POSIX_ACL=y
+
+CONFIG_HID=y
+CONFIG_HID_GENERIC=y
+CONFIG_USB_HID=y
+CONFIG_USB_HIDDEV=y
+
+CONFIG_USB_ACM=y
+CONFIG_USB_PRINTER=y
+CONFIG_USB_WDM=y
+CONFIG_USB_TMC=y
+
 EOF
-    
+
     scripts/config --enable KALLSYMS --enable SECURITY_APPARMOR --set-str LSM "lockdown,yama,apparmor,bpf" >/dev/null 2>&1
+
+    scripts/config --enable USB_STORAGE >/dev/null 2>&1
+    scripts/config --enable USB_UAS >/dev/null 2>&1
+    scripts/config --enable SCSI >/dev/null 2>&1
+    scripts/config --enable BLK_DEV_SD >/dev/null 2>&1
+    scripts/config --enable USB_SUPPORT >/dev/null 2>&1
+    scripts/config --enable USB >/dev/null 2>&1
+    scripts/config --enable VFAT_FS >/dev/null 2>&1
+    scripts/config --enable FAT_FS >/dev/null 2>&1
+    scripts/config --enable EXFAT_FS >/dev/null 2>&1
+    scripts/config --enable NTFS3_FS >/dev/null 2>&1
+
     make olddefconfig >/dev/null 2>&1
-    
-    echo -e "${GREEN}✅ StrayCore configuration optimized for your system${NC}"
+
+    if grep -q "CONFIG_USB_STORAGE=y" .config; then
+        echo -e "${GREEN}✅ USB Storage support confirmed in kernel config${NC}"
+    else
+        echo -e "${YELLOW}⚠️  Warning: USB Storage might not be properly enabled${NC}"
+    fi
+
+    echo -e "${GREEN}✅ StrayCore configuration optimized for your system with full USB support${NC}"
     echo ""
 }
 
